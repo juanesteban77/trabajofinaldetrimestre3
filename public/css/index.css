@@ -1,0 +1,633 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+h1{ font-size: 3.5em;}
+h2{ font-size: 2.7em;}
+h3{ font-size: 2em;}
+p{ font-size: 1.25em;}
+ul{ list-style: none;}
+li{ font-size: 1.25em;}
+
+button{
+    font-size: 1.25em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    color: white;
+    background-color: blueviolet;
+}
+
+button:hover{
+    background-color: rgb(101, 33, 165);
+}
+
+.container{
+    max-width: 1400px;
+    margin: auto;
+   
+
+}
+#caracteristicas .container{
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        background-color:rgb(230,230,230);
+    }
+
+#Contenedor{
+    justify-content:center;
+	width: 400px;
+	margin: 0px 10px;
+	background-color: rgba(50, 50, 50, 1);
+    border: 1px solid #ffffff;
+	height: 550px;
+	border-radius:8px;
+	padding: 0px 9px 0px 9px;
+    color: white;
+    font-size: 25px;
+}
+.botons{
+    height:50px;
+    margin: 0;
+    line-height: inherit;
+    font-size:20px;
+    background-color:white;
+    margin-top:70px;    
+}
+#Contenedor h4{
+margin-top: 60px;
+}
+
+
+.color-acento{ color:blueviolet; }
+
+header{
+    background-color: rgb(245,245,245);
+    z-index: 400;
+    
+}
+
+header .logo{
+    margin: 0;
+    padding: 25px 30px;
+    font-weight: bold;
+    color: blueviolet;
+    font-size: 1.6em;
+}
+
+header .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header nav{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+header a{
+    padding: 5px 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+header a:hover{
+    color: blueviolet;
+}
+
+#hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 90vh;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("/img/portada.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+#hero_cf{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    height: 90vh;
+    background-image: linear-gradient(
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("/img/configuracion.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.texto_cf{
+    font-size: 90px;
+    color: rgb(255, 255, 255);
+    font-family:  Tahoma;
+}
+
+#final .texto1{
+display:flex;
+
+}
+
+.img-container{
+    width:400px;
+    height: 450px;
+    background-image:url("/img/portadita.jpg");
+}
+.texto1{
+    font-size: 20px;
+    height: 400px;
+    width:400px;
+    background:blueviolet;
+    display: flex;
+    justify-content:left;
+    align-items:left;
+    flex-direction: column;
+    border-radius: 10px;
+    transform: scale(1,1);
+    box-shadow: 0px 0px 10px 10px rgb(255, 255, 255);
+}
+.texto1 .premio{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align:left;
+    color:rgb(0, 0, 0);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+#hero h1{
+    color: white;
+}
+
+#hero button{
+    font-size: 1.75em;
+}
+
+#somos-proya .container{
+    text-align: center;
+    padding: 200px 12px;
+}
+
+#nuestros-programas{
+    background-color: rgb(30,30,30);
+    color: white;
+    text-align: center;
+}
+
+#nuestros-programas .container{
+    padding: 150px 12px;
+}
+
+#nuestros-programas h2{
+    margin-top: 0;
+    font-size: 3.2em;
+}
+
+#nuestros-programas p{
+    display: none;
+}
+
+#nuestros-programas .carta{
+    background-position: center center;
+    background-size: cover;
+    padding: 50px 0px;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+.carta:first-child{
+    background-image: (
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("./img/libro3.jpg");
+
+}
+
+.carta:nth-child(2){
+    background-image: (
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("media/libro2.jpg");
+}
+
+.carta:nth-child(3){
+    background-image: (
+        0deg,
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)
+    )
+    ,url("media/libro1.jfif");
+
+}
+
+#caracteristicas .container{
+    text-align: center;
+    padding: 250px 12px;
+    
+}
+
+#caracteristicas li{
+    margin: 16px 0px;
+    font-weight: bold;
+}
+
+#final{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(30,30,30);
+    color: white;
+    height: 80vh;
+}
+
+#final h2{
+    font-size: 9em;
+}
+
+#final button{
+    font-size: 5vw;
+}
+
+footer{
+    background-color: rgb(230,230,230);
+    
+}
+
+footer p{
+    margin: 0;
+    padding: 12px;
+    color: rgb(100,100,100);
+}
+
+footer .container{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+@media (min-width: 850px){
+    header{
+        position: fixed;
+        width: 100%;
+    }
+
+    header .container{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    header nav{
+        flex-direction: row;
+        padding-bottom: 0;
+        padding-right: 20px;
+    }
+
+    #hero h1{
+        font-size: 5em;
+    }
+
+    #somos-proya .container{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    #somos-proya .texto{
+        width: 50%;
+        max-width: 600px;
+        text-align: initial;
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #somos-proya h2{
+        margin-top: 0px;
+    }
+
+    #somos-proya img{
+       margin-top:60px;
+        background-size: cover;
+        background-position: center center;
+        height: 500px;
+        width: 500px; 
+    }
+
+    #nuestros-programas .programas{
+        display: flex;
+        justify-content: center;
+    }
+
+    #nuestros-programas p{
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    #nuestros-programas h2{
+        font-size: 4em;
+    }
+
+    #nuestros-programas h3{
+        margin-top: 0;
+    }
+
+    
+
+    #caracteristicas{
+        background-repeat: no-repeat;
+        background-size: 800px 700px;
+        background-position: calc(120vw - 300px) 100px;
+       
+    }
+
+    #caracteristicas .container{
+        text-align: initial;
+    }
+
+    #caracteristicas ul{
+        margin-left: 100px;
+    }
+
+    #final h2{
+        font-size: 4em;
+    }
+
+    #final button{
+        font-size: 2em;
+    }
+
+    footer .container{
+        justify-content: flex-end;
+    }
+}
+
+@media (min-width: 1200px) {
+    #caracteristicas{
+        background-position-x: calc(100vw - 800px);
+    }
+}
+
+
+
+
+
+
+.Icon span{
+      background: #A8A6A6;
+      padding: 20px;
+      border-radius: 120px;
+}
+
+.Icon{
+     margin-top: 10px;
+     margin-bottom:10px; 
+     color: #FFF;
+     font-size: 50px;
+     text-align: center;
+}
+
+
+.opcioncontra{
+	text-align: center;
+	margin-top: 20px;
+	font-size: 14px;
+}
+
+
+
+
+@media only screen and (max-width:320px){
+#Contenedor{
+	width: 100%;
+	height:100px;
+	margin: 30px;
+}}
+
+.glyphicon-user{
+    width: 100%;
+    height: 80px;
+    background-color: blueviolet;
+    border-radius: 10px;
+    margin: 0px 0px 30px;
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+}
+
+ .btn-lg {
+     margin: 40px 0px 0px 70px;
+     border-radius: 10px;
+ }
+
+ input{
+     width: 80%;
+     height: 40px;
+ }
+
+ img{
+    
+     width: 500;
+     height: 100%;
+ }
+
+ .libr{
+    width: 100%;
+    margin: 10px ;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.card{
+    
+    width: 600px;
+    background: white;
+    margin: 10px;
+    margin-top: 0px;
+    height: 100%;
+    border-radius: 9px;
+    cursor:pointer ;
+    background:rgb(66, 63, 63);
+    
+}
+
+.boton3:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 7px rgba(43, 255, 0, 0.752);
+
+}
+.card  img{
+    width: 100%;
+    height: 100%;
+}
+    
+.link-card{
+    width:40px;
+    background-color: rgb(0, 0, 0);
+}
+
+.git{
+    height:80%;    
+}
+
+button{ 
+    margin: 40px;
+}
+
+.form-register {
+    width: 400px;
+    background: #24303c;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: 'calibri';
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+  }
+  
+  .form-register h4 {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+  
+  .controls {
+    width: 100%;
+    background: #24303c;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid blueviolet;
+    font-family: 'calibri';
+    font-size: 18px;
+    color: white;
+  }
+  
+  .form-register p {
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 40px;
+  }
+  
+  .form-register a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .form-register a:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .form-register .botons {
+    width: 100%;
+    background: blueviolet;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+  }
+  
+
+  .container-login{
+    background-color:rgb(0, 0, 0);
+    width: 100%;
+    height: 750px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    color: white;
+   
+  }
+
+  .container-login .boton2{
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 40px;
+    text-align: center;
+    
+  }
+
+.atras-login{
+    background-color: black;
+    height: 10px;
+    width: 100%;
+
+}
+
+.atras-login img{
+height: 40px;
+width: 50px;
+}
+
+.atras-login a{
+    background-color:transparent;
+    cursor: pointer;
+}
+
+.container-crear{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.btn-crear{
+    width: 200px;
+    height: 50px;
+    margin-top: 30px;
+    
+}
+.seccion2{
+    background-color: black;
+}
+.carta h2{
+    color: white;
+}
+
+
+.img-setings{
+    width: 30px;
+    height: 50px;
+    margin-left: 70px;
+}
