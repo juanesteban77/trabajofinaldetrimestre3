@@ -11,8 +11,8 @@ app.use(express.static(path.join(__dirname, "/public")));
 const nodemailer=require('nodemailer');
 const cookieParse = require("cookie-parser")
 const sessions  = require("express-session")
-const { render } = require('ejs');
-const { default: Swal } = require('sweetalert2');
+
+
 
 
 app.set('view engine', 'ejs');
@@ -36,6 +36,8 @@ const transport = nodemailer.createTransport({
 });
 app.get('/', (req, res) => {
   res.render('index');
+  
+  
 })
 
 app.post('/registro',(req, res) => {
@@ -149,7 +151,7 @@ app.post('/reserva_exitosa',(req, res) => {
         html: '<h1>Comprobante de reserva</h1> <h3>Presenta este comprobante y asi podras reclamar el libro, no olvides la fecha de devolucion <img src=""/></h3>' 
       }).then((res)=>{console.log(res);}).catch((err)=>{console.log(err);
       })
-      return res.redirect("/biblioteca");
+      return res.send(`su reserva fue exitosa, <a href=\'/biblioteca'>inicio</a>`);
   
     
   }

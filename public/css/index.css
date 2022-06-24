@@ -36,6 +36,7 @@ button:hover{
 .container{
     max-width: 1400px;
     margin: auto;
+    
    
 
 }
@@ -52,7 +53,7 @@ button:hover{
 	margin: 0px 10px;
 	background-color: rgba(50, 50, 50, 1);
     border: 1px solid #ffffff;
-	height: 550px;
+	height: 600px;
 	border-radius:8px;
 	padding: 0px 9px 0px 9px;
     color: white;
@@ -135,17 +136,18 @@ header a:hover{
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    height: 90vh;
+    height: 100vh;
     background-image: linear-gradient(
         0deg,
         rgba(0,0,0,0.5),
         rgba(0,0,0,0.5)
     )
-    ,url("/img/configuracion.png");
+    ,url("/img/configuracion.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
+
 
 .texto_cf{
     font-size: 90px;
@@ -157,30 +159,32 @@ header a:hover{
 display:flex;
 
 }
-
+.img-container img{
+    height: 70px;
+}
 .img-container{
     width:400px;
-    height: 450px;
-    background-image:url("/img/portadita.jpg");
+    background-image:url("/img/importancia4.jpg");
+    background-repeat: no-repeat;
 }
 .texto1{
     font-size: 20px;
     height: 400px;
     width:400px;
-    background:blueviolet;
+    background:rgb(168, 22, 197);
     display: flex;
     justify-content:left;
-    align-items:left;
+    align-items:center;
     flex-direction: column;
     border-radius: 10px;
     transform: scale(1,1);
-    box-shadow: 0px 0px 10px 10px rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 10px rgb(0, 0, 0);
 }
 .texto1 .premio{
     list-style: none;
     display: flex;
     flex-direction: column;
-    text-align:left;
+    text-align:center;
     color:rgb(0, 0, 0);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     
@@ -223,35 +227,6 @@ display:flex;
     padding: 50px 0px;
     margin: 30px;
     border-radius: 15px;
-}
-
-.carta:first-child{
-    background-image: (
-        0deg,
-        rgba(0,0,0,0.5),
-        rgba(0,0,0,0.5)
-    )
-    ,url("./img/libro3.jpg");
-
-}
-
-.carta:nth-child(2){
-    background-image: (
-        0deg,
-        rgba(0,0,0,0.5),
-        rgba(0,0,0,0.5)
-    )
-    ,url("media/libro2.jpg");
-}
-
-.carta:nth-child(3){
-    background-image: (
-        0deg,
-        rgba(0,0,0,0.5),
-        rgba(0,0,0,0.5)
-    )
-    ,url("media/libro1.jfif");
-
 }
 
 #caracteristicas .container{
@@ -477,18 +452,6 @@ footer .container{
     
 }
 
-.card{
-    
-    width: 600px;
-    background: white;
-    margin: 10px;
-    margin-top: 0px;
-    height: 100%;
-    border-radius: 9px;
-    cursor:pointer ;
-    background:rgb(66, 63, 63);
-    
-}
 
 .boton3:hover{
     transform: scale(1.1);
@@ -510,7 +473,9 @@ footer .container{
 }
 
 button{ 
-    margin: 40px;
+   
+    width: 250px;
+    border-radius: 20px;
 }
 
 .form-register {
@@ -589,7 +554,8 @@ button{
     
   }
 
-.atras-login{
+nav .atras-login{
+   
     background-color: black;
     height: 10px;
     width: 100%;
@@ -597,8 +563,9 @@ button{
 }
 
 .atras-login img{
-height: 40px;
+height: 50px;
 width: 50px;
+
 }
 
 .atras-login a{
@@ -626,8 +593,172 @@ width: 50px;
 }
 
 
-.img-setings{
+.settings a img{
     width: 30px;
-    height: 50px;
+    height: 30px;
     margin-left: 70px;
 }
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img{
+    width: 30px;
+    height: 30px;
+}
+
+.linea{
+    width: 100%;
+    padding: 2px ;
+background-color:blueviolet;
+}
+
+.conatiner {
+	width: 100%;
+	height: 700px;
+}
+
+.container_libros{
+    width: 100%;
+    height: 90%;
+}
+.wrap {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+}
+
+.box {
+	margin: 10px;
+	width: 200px;
+	height: 300px;
+	text-align: center;
+	border-radius: 3px;
+    transition: all .2s ease-out;
+	
+}
+.box:hover {
+	margin-bottom: -10px;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.7);
+	        box-shadow: 0 0 5px rgba(0,0,0,0.7);
+}
+.box h1 {
+	color: #fff;
+	padding: 30px;
+	margin-top: 100px;
+	text-align: center;
+	font-weight: 100;
+	font-size: 25px;
+	background: rgba(0,0,0,0.8);
+	-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.7);
+	        box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+.date h4 {
+	color: #fff;
+	font-weight: 300;
+	text-align: center;
+	letter-spacing: 3px;
+	text-shadow: 0 0 3px rgba(0,0,0,0.9);
+}
+.poster {
+	width: 100px;
+	height:50px;
+	position: relative;
+	border-radius: 100px;
+}
+.poster h2 {
+	color: #fff;
+	font-size: 10px;
+	text-align: center;
+	
+}
+.uno{
+	background-image:url("/img/libro8.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.dos {
+	background: url("/img/libro7.jpg");;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.tres{
+	background-image:url("/img/libro3.jpg");;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.cuatro {
+	background: url("/img/libro1.jpg");;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.cinco {
+	background: url("/img/libro11.jpg");;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.seis{
+	background-image: url("/img/libro2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.siete {
+	background-image: url("/img/libro77.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.ocho {
+	background-image: url("/img/libro88.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.nueve {
+	background-image: url("/img/libro99.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.diez {
+	background-image: url("/img/libro110.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.once {
+	background-image: url("/img/libro111.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.doce {
+	background-image: url("/img/libro112.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
