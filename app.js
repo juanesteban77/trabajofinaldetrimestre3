@@ -24,7 +24,7 @@ app.use(sessions({
     secret: "rfghf66a76ythggi87au7td",
     saveUninitialized:true,
     cookie: { maxAge: timeEXp },
-    resave: false 
+    resave: 'welcome to bibliotec'
 }));
 const transport = nodemailer.createTransport({
   host:'smtp.gmail.com',
@@ -56,7 +56,7 @@ app.post('/registro',(req, res) => {
         from : 'sisibibliotec@gmail.com',
         to: email,
         subject: 'confirma',
-        html: 'welcome to bibliotec'
+        html:'welcome to bibliotec'
       }).then((res)=>{console.log(res);}).catch((err)=>{console.log(err);
       })
       return res.redirect("/login");
@@ -107,12 +107,28 @@ app.post('/login', (req, res) => {
   })
 })
 
+app.post('/administrador', (req, res) => {
+
+  res.render('administrador');
+})
+app.get('/administrador', (req, res) => {
+  res.render('administrador');
+})
+
+app.get('/reserva_libro', (req, res) => {
+
+  res.render('reserva_libro');
+  
+})
 
 app.get('/login', (req, res) => {
 
   res.render('login');
 })
 
+app.post('/registro_admin', (req, res) => {
+  res.send('si se registro');
+})
 app.get('/registro_admin', (req, res) => {
   res.render('registro_admin');
 })
@@ -166,46 +182,27 @@ app.post('/reserva_exitosa',(req, res) => {
 
 
 
-app.post('/administrador', (req, res) => {
-
-  res.render('administrador');
-})
-app.get('/administrador', (req, res) => {
-  res.render('administrador');
-})
-
-app.get('/reserva_libro', (req, res) => {
-
-  res.render('reserva_libro');
-  
-})
 
 
 app.post('/registro_admin',(req, res) => {
-  let email_admin = req.body.email;
-  let pass_admin = req.body.password;
-  db.run(`INSERT INTO administrador(email_admin, pass_admin) VALUES (?, ?)`,
+  let email_admin= req.body.email.admin;
+  let pass_admin= req.body.pass_admin;
+  db.run(`INSERT INTO administrador(email_admin,pass_admin) VALUES (?, ?)`,
   [email_admin,pass_admin],
-   (error) => {
+    (error) => {
     if(!error){
       console.log("insert ok")
-      return res.redirect("/login_admin");
-  }else{
-    console.log("insert error", error.code);
-    if (error.code == "QLITE_CONSTRAINT") {
+      res.render("login_admin")
      
-      return res.send("el usuario ya existe")
-    } 
-    
-    
+  }else{
+    console.log("insert fail");
   }
-  return res.send("ocurrio un error desconocido")
   
 
   })
-
+  
 })
-
+     
   app.post('/login_admin', (req, res) => {
     let email_admin = req.body.email;
     let pass_admin = req.body.password;
