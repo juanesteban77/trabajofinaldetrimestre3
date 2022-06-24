@@ -127,7 +127,7 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/registro_admin', (req, res) => {
-  res.send('si se registro');
+  res.render('login_admin');
 })
 app.get('/registro_admin', (req, res) => {
   res.render('registro_admin');
