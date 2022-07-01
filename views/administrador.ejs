@@ -33,28 +33,32 @@
     <div class="seccion2">
         <div class="container-crear">
             <div class="carta">
+                <form action="/libros" method="post">
              <h2>crear libro</h2>
 
-             <input class="input" type="text" placeholder="nombre de libro">
-             <input class="input" type="text" placeholder="id del libro">
-             <input class="input" type="text"  placeholder="img del libro">
-             <button class="btn-crear">crear libro
-            </div>
+             <input class="input" name="nombre"type="text" placeholder="nombre de libro">
+             <input class="input" name="url"type="text" placeholder="url">
+             
             
+            </div>
+             <button class="btn-crear">crear libro
 
-             </button>
+            </form>
            </div>  
     
    
         <div class="container-crear">
             <div class="carta">
+                <form action="/libros" method="post">
                 <h2>editar libro</h2>
    
-                <input class="input" type="text" placeholder="nombre de libro">
-                <input class="input" type="text" placeholder="id del libro">
-                <input class="input" type="text"  placeholder="img del libro">
+                
+                <input class="input"  name="url"  type="text" placeholder="url">
+                <input class="input"  name="nombre"name="url"  type="text" placeholder="url">
+                <input class="input"  name="nombre" type="text"  placeholder="nombre">
                 <button class="btn-crear">editar libro
                </div>
+            </form>
                
    
                 </button>

@@ -1,21 +1,24 @@
 const express = require('express')
 const app = express()
+const { body,  validationResult  } = require("express-validator")
 const sqlite3=require('sqlite3');
 const path = require("path")
 const db = new sqlite3.Database('./db/bibliotec.db')
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 const bcrypt = require('bcrypt');
-const port = 3000
+const port = 10101
 app.use(express.static(path.join(__dirname, "/public")));
 const nodemailer=require('nodemailer');
 const cookieParse = require("cookie-parser")
-const sessions  = require("express-session")
+const sessions  = require("express-session");
+const { stringify } = require('querystring');
 
 
 
 
 app.set('view engine', 'ejs');
+
 
 app.use(cookieParse())
 const timeEXp = 1000 * 60 * 60 * 24;
@@ -30,8 +33,8 @@ const transport = nodemailer.createTransport({
   host:'smtp.gmail.com',
   port:587,
   auth:{
-    user:'sisibibliotec@gmail.com',
-    pass:'kosjlnfjcvmjihxm'
+    user:'juanmarianavalery@gmail.com',
+    pass:'bqdfeirlbwlcbjlz'
   }
 });
 app.get('/', (req, res) => {
@@ -40,23 +43,76 @@ app.get('/', (req, res) => {
   
 })
 
-app.post('/registro',(req, res) => {
+app.post('/registro',/*[
+  body("nombre","ingrese un nombre valido").exists().isEmpty(),
+  body("email", "ingrese un email valido").exists().isEmail().isEmpty(),
+  body("password", "ingrese una contraseña valida").exists().isEmpty(),
+ ],*/(req, res) => {
+  /*const error = validationResult(req)
+  if (!error.isEmpty()) {
+    const valores = req.body;
+    const validacion = error
+})
+app.post('/login', (req, res) => {
+  let email = req.body.email;
+  let password = req.bod.array()
+    return res.render("index",{validacion:validacion,valores:valores})
+  }else{
+    res.render("")
+  }*/
   let nombre = req.body.nombre;
   let email = req.body.email;
   let password = req.body.password;
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(password, salt);
+  
   db.run(`INSERT INTO usuario(nombre,email,password) VALUES (?, ?, ?)`,
   [nombre,email,hash],
-    (error) => {
+    (error) => { 
     if(!error){
       console.log("insert ok")
       transport.sendMail({
-        from : 'sisibibliotec@gmail.com',
+        from : 'juanmarianavalery@gmail.com',
         to: email,
         subject: 'confirma',
-        html:'welcome to bibliotec'
+        html:`<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <title>Bibliotec</title>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="/css/index.css">
+            <link rel="shortcut icon" href="media/icon.png" type="image/x-icon">
+            <link rel="stylesheet" href="/sweet/sweetalert2.min.css">
+            <body>
+        
+
+        
+        <div class="container" style="box-shadow: 10px 10px red; 
+        background-color: black;
+        color: white;
+        width: 700px;
+        height: 700px;
+        font-size: 20px;
+        text-align: center;
+      
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif "" 
+        <div class="img" >
+<img style="width: 460px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5kXqQM5YG-47_dOcUbLwnD0zzlTmr8H5I1A&usqp=CAU" </div>
+<h1 style="margin-bottom: 60px; color:white">EN BIBLIOTEC PODRAS RESERVAR LOS LIBROS QUE MAS TE GUSTAN </h1>
+      </div>
+        
+        
+      
+        
+        
+        
+                           
+                 
+        </body>
+        </html>`
       }).then((res)=>{console.log(res);}).catch((err)=>{console.log(err);
       })
       return res.redirect("/login");
@@ -93,44 +149,56 @@ app.post('/login', (req, res) => {
 
         session = req.session;
         session.userid = email;
-        return   res.redirect("/biblioteca")
+        return  res.redirect("productos")
       }else{
 
-        return res.send(`Usuario o contraseña incorrecta, <a href=\'/login'>Click</a>`)
+       
+        res.render('contraseña');
       }
     }
    }else{
 
-     return res.send("Usuario o contraseña incorrecta");
+     return res.render('contraseña');
    }
     
   })
 })
 
 app.post('/administrador', (req, res) => {
-
+    res.render('administrador')
+}
+)
+app.get('/adminion.userid = email;istrador', (req, res) => {
   res.render('administrador');
 })
-app.get('/administrador', (req, res) => {
-  res.render('administrador');
-})
-
-app.get('/reserva_libro', (req, res) => {
-
-  res.render('reserva_libro');
   
+
+app.get('/reserva_libro',  (req, res) => {
+
+  res.render('rion.userid = email;eserva_libro');
 })
 
-app.get('/login', (req, res) => {
-
-  res.render('login');
+app.get('/login',(req, res)  => {
+    res.render('login');
 })
+
+
+
 
 app.post('/registro_admin', (req, res) => {
   res.render('login_admin');
 })
 app.get('/registro_admin', (req, res) => {
   res.render('registro_admin');
+})
+app.get('/mensaje', (req, res) => {
+  res.render('mensaje');
+})
+app.get('/administrador', (req, res) => {
+  res.render('administrador');
+})
+app.get('/contraseña', (req, res) => {
+  res.render('contraseña');
 })
 app.get('/login_admin', (req, res) => {
 
@@ -146,44 +214,10 @@ app.get('/configuracion', (req, res) => {
 
   res.render('configuracion');
 })
-app.get('/reserva_exitosa', (req, res) => {
+app.get('/reserva', (req, res) => {
 
-  res.render('reserva exitosa');
-})
-app.post('/reserva_exitosa',(req, res) => {
-  let nombre = req.body.nombre;
-  let direccion = req.body.direccion;
-  let correo= req.body.correo;
-  let fecha_devolucion= req.body.fecha_devolucion;
-  db.run(`INSERT INTO reserva(nombre,direccion,correo,fecha_devolucion) VALUES (?, ?, ?, ?)`,
-  [nombre,direccion,correo,fecha_devolucion],
-    (error) => {
-    if(!error){
-      console.log("insert ok")
-      transport.sendMail({
-        from : 'sisibibliotec@gmail.com',
-        to:correo,
-        subject: 'confirma',
-        html: '<h1>Comprobante de reserva</h1> <h3>Presenta este comprobante y asi podras reclamar el libro, no olvides la fecha de devolucion <img src=""/></h3>' 
-      }).then((res)=>{console.log(res);}).catch((err)=>{console.log(err);
-      })
-      return res.send(`su reserva fue exitosa, <a href=\'/biblioteca'>inicio</a>`);
-  
-    
-  }
-  
-  
-
-  })
-  
-})
-     
-    
-
-
-
-
-
+  res.render('reserva')
+});
 app.post('/registro_admin',(req, res) => {
   let email_admin= req.body.email.admin;
   let pass_admin= req.body.pass_admin;
@@ -195,7 +229,7 @@ app.post('/registro_admin',(req, res) => {
       res.render("login_admin")
      
   }else{
-    console.log("insert fail");
+   res.send("usuario o contraseña incorrecta");
   }
   
 
@@ -235,7 +269,100 @@ app.post('/registro_admin',(req, res) => {
       })
     })
       
+    app.get('/productos', (req, res) => {
+      session = req.session;
+     
+      db.all("select * from libros",
+     
+      (error,rows)=>{ 
+        if (!error) {
+          res.render('productos', {data: rows});
+          
+        }else{
+          res.send("inicie sesion")
+        }
+      })
       
+    })
+    
+    app.get('/reservar/:idarticulo', (req, res) => {
+      session = req.session;
+      let id = req.params.idarticulo;
+      let validatorId = parseInt(id)
+      
+      if (isNaN(validatorId)){
+        return  res.send("Ingrese id de producto válido");
+      }else{
+        db.run(`INSERT INTO reserva(id) VALUES (?)`,
+        [id],
+          (error) => {
+          if(!error){
+            console.log("insert ok");
+            db.get(`SELECT nombre,url FROM libros WHERE id=$id`,{
+              $id:id
+            },  (error,rows) => {
+              transport.sendMail({  
+                from : 'juanmarianavalery@gmail.com',
+              to: session.userid,
+               subject: 'confirma',
+              html:` <!DOCTYPE html>
+              <html lang="en">
+              <head>
+                  <title>Bibliotec</title>
+                  <meta charset="UTF-8">
+                  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <link rel="stylesheet" href="/css/index.css">
+                  <link rel="shortcut icon" href="media/icon.png" type="image/x-icon">
+                  <link rel="stylesheet" href="/sweet/sweetalert2.min.css">
+                  <body>
+              <div class="container" style="  box-shadow: 10px 10px red;
+              background-color: black;
+              width: 700px;
+              height: 880px;
+              font-size: 20px;
+              text-align: center;
+              font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+              <h1 style=" color:white;">TU RESERVA DEL LIBRO</h1> <h2 style="color:blueviolet; margin-top: 40px;"> ${rows.nombre}</h2><h1 style=" color:white;">FUE ESXITOSA</h1>
+              <img src=${rows.url}  ></div>
+              
+              
+              
+              
+              
+              </div>
+              
+              
+                                 
+                       
+              </body>
+              </html>
+              `
+
+             
+              }).then((res)=>{console.log(res);}).catch((err)=>{console.log(err);
+              })
+              res.render("reserva",{data1:rows.nombre} )
+            })
+            
+
+            
+        }else{
+          console.log(error);
+        }
+      }
+        )}
+        
+            
+ 
+    })
+  
+  
+  
+      //hacemos el proceso de compra en la bd...
+      //enviamos un correo de confirmacion de compra...
+      //retornamos un mensaje de compra exitosa
+  
 
 app.get("/biblioteca",(req,res)=>{
   
@@ -249,7 +376,24 @@ app.get("/biblioteca",(req,res)=>{
   }
 
 })
+app.post("/libros",(req,res)=>{
+  let url = req.body.url;
+  let nombre=req.body.nombre;
+  db.run(`INSERT INTO libros(url,nombre) VALUES (?, ?)`,[
+    url,nombre], (error)=>{
 
+    if (!error) {
+      console.log("insert ok");
+      res.send(`libro creado exitosamente, <a href=\'/administrador'>volver</a>`)
+      
+    }else{
+      console.log("no se pudo insertar");
+    }
+
+  })
+
+
+})
 
 
 
