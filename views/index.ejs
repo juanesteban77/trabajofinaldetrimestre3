@@ -10,86 +10,41 @@
     <link rel="shortcut icon" href="media/icon.png" type="image/x-icon">
 </head>
 <body>
-   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <header>
-        <div class="container">
-            <div class="title">
-                <p  onclick="location.href='/'"  class="logo">Bibliotec</p>
-            </div>
-          
-            <div class="nav">
-                <nav>
-                    <div class="anclas">
-                        <a href="/login">iniciar sesion</a>
-                    <a href="#somos-proya">Quienes somos</a>
-                    </div>
-                   <div class="settings">
-                    <a href="/configuracion"  class="img-setings">
-                        <img src="/img/config.jpg" >
-                    </a>
-                   </div>
-                  
-                    
-                </nav>
-            </div>
+    <nav class="nav-barra">
+        <div class="img">
+          <img src="/img/logo.png"    height="100px" width="300px">
         </div>
-    </header>
-
-    <section id="hero">
-        
-        <h1>Hola! si quieres leer estas en el lugar indicado<br></h1>
-        <button  onclick="location.href='#caracteristicas'">REGISTRATE YA!!</button>
-    </section>
-
-    <section id="somos-proya">|
-
-        
-        <div class="container">
-         
-            <div class="img-container"></div>
-            <div class="texto2">
-
-                <h2>Somos <span class="color-acento">Bibliotec!</span></h2>
-                <p>CON ESTA PAGINA WEB BUSCAMOS INCREMENTAR MAS LECTURA EN LOS NIÑOS Y ADOLECENTES DEL COLEGIO LIBRE DE CIRCASIA, POR LA CUAL PODRAN VER LOS LIBROS DISPONILBLES QUE ESTAN EN LA BIBLIOTECA
-
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="nuestros-programas">
-      
-    </section>
-
-    <section id="caracteristicas">
-        <div class="container">
-        
-            <div id="Contenedor">
+<div class="enlace">
+        <a href="/login">iniciar sesion</a>+
+      </div>
+       <div class="barra">
        
-                <div class="Icon">
-                         <form action="/registro" method="post">
-                    <section >
-                        <h4>Formulario Registro</h4>
-                        <input class="controls" type="text" name="nombre" id="nombres" placeholder="Ingrese su nombre completo" required>
-                        
-                        <input class="controls" type="email" name="email" id="email" placeholder="Ingrese su Correo" required>
-                        <input class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña" required>
-
-                        <button class="botons" type="submit" value="Registrar" > registrar</button>
-                      </form>
-                </div>	
-                </div>
+        
       
-        </div>
-    </section>
-
+       </div>
+       </nav>
+      
+       <div class="container">
+        
+        <div id="Contenedor">
    
+            <div class="Icon">
+                     <form action="/registro" method="post">
+                <section >
+                    <h4>Register</h4>
+                    <input class="controls" type="email" name="email" id="email" placeholder="Ingrese su Correo" required>
+                    <input class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña" required>
 
-    <footer>
-        <div class="container">
-            <p>&copy; Bibliotec 2022</p>
-        </div>
-    </footer>
+                    <button class="botons" type="submit" value="Registrar" > Registrar</button>
+                  </form>
+            </div>	
+            </div>
+  
+    </div>
+      
+      
+       <footer>Inventārs, Copyright &#169; 2022</footer>
+      
+      
 </body>
 </html>

@@ -3,7 +3,7 @@ const app = express()
 const { body,  validationResult  } = require("express-validator")
 const sqlite3=require('sqlite3');
 const path = require("path")
-const db = new sqlite3.Database('./db/bibliotec.db')
+const db = new sqlite3.Database('./db/inventars.db')
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 const bcrypt = require('bcrypt');
@@ -43,32 +43,16 @@ app.get('/', (req, res) => {
   
 })
 
-app.post('/registro',/*[
-  body("nombre","ingrese un nombre valido").exists().isEmpty(),
-  body("email", "ingrese un email valido").exists().isEmail().isEmpty(),
-  body("password", "ingrese una contraseña valida").exists().isEmpty(),
- ],*/(req, res) => {
-  /*const error = validationResult(req)
-  if (!error.isEmpty()) {
-    const valores = req.body;
-    const validacion = error
-})
-app.post('/login', (req, res) => {
-  let email = req.body.email;
-  let password = req.bod.array()
-    return res.render("index",{validacion:validacion,valores:valores})
-  }else{
-    res.render("")
-  }*/
-  let nombre = req.body.nombre;
+app.post('/registro',
+  (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(password, salt);
   
-  db.run(`INSERT INTO usuario(nombre,email,password) VALUES (?, ?, ?)`,
-  [nombre,email,hash],
+  db.run(`INSERT INTO usuario(email,password) VALUES (?, ?)`,
+  [email,hash],
     (error) => { 
     if(!error){
       console.log("insert ok")
@@ -118,7 +102,7 @@ app.post('/login', (req, res) => {
       return res.redirect("/login");
   }else{
     console.log("insert error", error.code);
-    if (error.code == "QLITE_CONSTRAINT") {
+    if (error.code == "sQLITE_CONSTRAINT") {
      
        return res.send("el usuario ya existe")
     } 
@@ -146,10 +130,10 @@ app.post('/login', (req, res) => {
     if(passBaseDatos){
   
       if (bcrypt.compareSync(password, passBaseDatos)){
-
         session = req.session;
         session.userid = email;
-        return  res.redirect("productos")
+
+        return  res.redirect("registrarproducto")
       }else{
 
        
@@ -168,8 +152,8 @@ app.post('/administrador', (req, res) => {
     res.render('administrador')
 }
 )
-app.get('/adminion.userid = email;istrador', (req, res) => {
-  res.render('administrador');
+app.get('/registrarproducto', (req, res) => {
+  res.render('registrarproducto');
 })
   
 
@@ -181,6 +165,10 @@ app.get('/reserva_libro',  (req, res) => {
 app.get('/login',(req, res)  => {
     res.render('login');
 })
+app.get('/registro-exitoso',(req, res)  => {
+  res.render('registro-exitoso');
+})
+
 
 
 
@@ -188,9 +176,7 @@ app.get('/login',(req, res)  => {
 app.post('/registro_admin', (req, res) => {
   res.render('login_admin');
 })
-app.get('/registro_admin', (req, res) => {
-  res.render('registro_admin');
-})
+
 app.get('/mensaje', (req, res) => {
   res.render('mensaje');
 })
@@ -214,6 +200,7 @@ app.get('/configuracion', (req, res) => {
 
   res.render('configuracion');
 })
+
 app.get('/reserva', (req, res) => {
 
   res.render('reserva')
@@ -269,14 +256,15 @@ app.post('/registro_admin',(req, res) => {
       })
     })
       
-    app.get('/productos', (req, res) => {
-      session = req.session;
+    app.get('/registro', (req, res) => {
+      
      
-      db.all("select * from libros",
+      db.all("select * from registroproductos",
      
       (error,rows)=>{ 
+        console.log(rows);
         if (!error) {
-          res.render('productos', {data: rows});
+          res.render('registro',{data: rows});
           
         }else{
           res.send("inicie sesion")
@@ -323,7 +311,7 @@ app.post('/registro_admin',(req, res) => {
               font-size: 20px;
               text-align: center;
               font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-              <h1 style=" color:white;">TU RESERVA DEL LIBRO</h1> <h2 style="color:blueviolet; margin-top: 40px;"> ${rows.nombre}</h2><h1 style=" color:white;">FUE ESXITOSA</h1>
+              <h1 style=" color:white;">TU RESERVA DEL LIBRO</h1> <h2 style="color:blueviolet; margin-top: 40px;"> ${rows.nombre}</h2><h1 style=" color:white;">FUE EXITOSA</h1>
               <img src=${rows.url}  ></div>
               
               
@@ -376,17 +364,23 @@ app.get("/biblioteca",(req,res)=>{
   }
 
 })
-app.post("/libros",(req,res)=>{
-  let url = req.body.url;
+app.post("/registrarproducto",(req,res)=>{
+  let id = req.body.id;
+  let categoria=req.body.categoria;
   let nombre=req.body.nombre;
-  db.run(`INSERT INTO libros(url,nombre) VALUES (?, ?)`,[
-    url,nombre], (error)=>{
-
+  let descripcion=req.body.descripcion;
+  let fechaven=req.body.fechaven;
+  let envalaje=req.body.envalaje;
+  let cantidad=req.body.cantidad;
+  db.run(`INSERT INTO registroproductos(id,categoria,nombre,descripcion,fechaven,envalaje,cantidad) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+  [id,categoria,nombre,descripcion,fechaven,envalaje,cantidad],
+   (error)=>{
     if (!error) {
       console.log("insert ok");
-      res.send(`libro creado exitosamente, <a href=\'/administrador'>volver</a>`)
+      res.render(`registro-exitoso`)
       
     }else{
+      
       console.log("no se pudo insertar");
     }
 
